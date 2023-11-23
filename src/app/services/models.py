@@ -89,6 +89,5 @@ __all__ = [
     "CustomPlayerRecord",
     "DailyMessage",
     "PlayerActivity",
-    "WeaponType",
     "Validatable",
 ]
