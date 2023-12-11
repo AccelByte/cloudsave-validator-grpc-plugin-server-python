@@ -125,6 +125,9 @@ def create_options(env: Env, logger: Logger) -> List[AppOption]:
                 from accelbyte_py_sdk.token_validation.caching import (
                     CachingTokenValidator,
                 )
+                from accelbyte_py_sdk.services.auth import (
+                    login_client,
+                )
                 from accelbyte_grpc_plugin.interceptors.authorization import (
                     AuthorizationServerInterceptor,
                 )
@@ -141,6 +144,9 @@ def create_options(env: Env, logger: Logger) -> List[AppOption]:
                         "token": InMemoryTokenRepository(),
                     }
                 )
+                result, error = login_client(sdk=sdk)
+                if error:
+                    raise Exception(str(error))
                 options.append(
                     AppOptionGRPCInterceptor(
                         interceptor=AuthorizationServerInterceptor(
