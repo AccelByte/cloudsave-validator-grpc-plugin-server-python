@@ -121,13 +121,17 @@ class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):
         if request.key.endswith("favourite_weapon"):
             assert isinstance(request.payload, bytes)
             payload_dict = json.loads(request.payload)
-            record = CustomPlayerRecord(**payload_dict)
-
-            validation_error = record.validate()
-            if validation_error:
+            try:
+                record = CustomPlayerRecord(**payload_dict)
+                validation_error = record.validate()
+                if validation_error:
+                    result.isSuccess = False
+                    result.error.errorCode = 1
+                    result.error.errorMessage = str(validation_error)
+            except:
                 result.isSuccess = False
                 result.error.errorCode = 1
-                result.error.errorMessage = str(validation_error)
+                result.error.errorMessage = "Parsing failed"
 
         return result
 
