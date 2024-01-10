@@ -45,7 +45,7 @@ install:
 	pip install .
 
 run:
-	python -m app
+	cd src && python -m app
 
 image:
 	docker buildx build -t ${IMAGE_NAME} --load .
