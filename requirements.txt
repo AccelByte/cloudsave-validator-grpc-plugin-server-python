@@ -29,3 +29,5 @@ opentelemetry-exporter-zipkin-proto-http
 
 # prometheus
 prometheus-client
+
+protobuf==3.20.*
