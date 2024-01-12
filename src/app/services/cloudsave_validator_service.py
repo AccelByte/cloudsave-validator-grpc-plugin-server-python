@@ -57,7 +57,7 @@ class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):
         if request.key.endswith("map"):
             assert isinstance(request.payload, bytes)
             payload_dict = json.loads(request.payload)
-            record = CustomGameRecord(**payload_dict)
+            record = CustomGameRecord.from_dict(payload_dict)
 
             validation_error = record.validate()
             if validation_error:
@@ -79,7 +79,7 @@ class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):
         if request.key.endswith("daily_msg"):
             assert isinstance(request.payload, bytes)
             payload_dict = json.loads(request.payload)
-            message = DailyMessage(**payload_dict)
+            message = DailyMessage.from_dict(payload_dict)
 
             validation_error = message.validate()
             if validation_error:
@@ -122,7 +122,7 @@ class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):
             assert isinstance(request.payload, bytes)
             payload_dict = json.loads(request.payload)
             try:
-                record = CustomPlayerRecord(**payload_dict)
+                record = CustomPlayerRecord.from_dict(payload_dict)
                 validation_error = record.validate()
                 if validation_error:
                     result.isSuccess = False
@@ -171,7 +171,7 @@ class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):
         if request.key.endswith("map"):
             assert isinstance(request.payload, bytes)
             payload_dict = json.loads(request.payload)
-            record = CustomGameRecord(**payload_dict)
+            record = CustomGameRecord.from_dict(payload_dict)
 
             validation_error = record.validate()
             if validation_error:
@@ -195,7 +195,7 @@ class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):
         if request.key.endswith("player_activity"):
             assert isinstance(request.payload, bytes)
             payload_dict = json.loads(request.payload)
-            activity = PlayerActivity(**payload_dict)
+            activity = PlayerActivity.from_dict(payload_dict)
 
             validation_error = activity.validate()
             if validation_error:

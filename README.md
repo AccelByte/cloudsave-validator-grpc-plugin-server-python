@@ -174,7 +174,7 @@ The custom functions in this sample app can be tested locally using [postman](ht
           "userId": "1e076bcee6d14c849ffb121c0e0135be",
           "error": {
               "errorCode": 1,
-              "errorMessage": "favourite weapon cannot be empty;favourite weapon type cannot be empty;user ID cannot be empty"
+              "errorMessage": "userId cannot be empty;favouriteWeaponType cannot be empty;invalid weapon type;favouriteWeapon cannot be empty"
           }
       }
       ```

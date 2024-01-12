@@ -2,6 +2,7 @@
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
+import inspect
 from dataclasses import dataclass
 from typing import Optional
 from typing import Protocol, runtime_checkable
@@ -15,68 +16,108 @@ class Validatable(Protocol):
 
 @dataclass
 class CustomGameRecord:
-    locationId: Optional[str]
-    name: Optional[str]
-    totalResources: Optional[int]
-    totalEnemy: Optional[int]
+    locationId: Optional[str] = None
+    name: Optional[str] = None
+    totalResources: Optional[int] = None
+    totalEnemy: Optional[int] = None
 
     def validate(self) -> Optional[Exception]:
+        validation_errors = []
         if not self.locationId:
-            return Exception("locationId cannot be empty")
+            validation_errors.append("locationId cannot be empty")
         if not self.name:
-            return Exception("name cannot be empty")
+            validation_errors.append("name cannot be empty")
         if self.totalResources is None:
-            return Exception("totalResources cannot be empty")
+            validation_errors.append("totalResources cannot be empty")
         if self.totalEnemy is None:
-            return Exception("totalEnemy cannot be empty")
+            validation_errors.append("totalEnemy cannot be empty")
+        if validation_errors:
+            return Exception(";".join(validation_errors))
         return None
+
+    @classmethod
+    def from_dict(cls, dikt: dict):
+        return cls(**{
+            k: v for k, v in dikt.items()
+            if k in inspect.signature(cls).parameters
+        })
 
 
 @dataclass
 class CustomPlayerRecord:
-    userId: Optional[str]
-    favouriteWeaponType: Optional[str]
-    favouriteWeapon: Optional[str]
+    userId: Optional[str] = None
+    favouriteWeaponType: Optional[str] = None
+    favouriteWeapon: Optional[str] = None
 
     def validate(self) -> Optional[Exception]:
+        validation_errors = []
         if not self.userId:
-            return Exception("userId cannot be empty")
+            validation_errors.append("userId cannot be empty")
         if not self.favouriteWeaponType:
-            return Exception("favouriteWeaponType cannot be empty")
+            validation_errors.append("favouriteWeaponType cannot be empty")
         if self.favouriteWeaponType not in ("SWORD", "GUN"):
-            return Exception("invalid weapon type")
+            validation_errors.append("invalid weapon type")
         if self.favouriteWeapon is None:
-            return Exception("favouriteWeapon cannot be empty")
+            validation_errors.append("favouriteWeapon cannot be empty")
+        if validation_errors:
+            return Exception(";".join(validation_errors))
         return None
+
+    @classmethod
+    def from_dict(cls, dikt: dict):
+        return cls(**{
+            k: v for k, v in dikt.items()
+            if k in inspect.signature(cls).parameters
+        })
 
 
 @dataclass
 class DailyMessage:
-    message: Optional[str]
-    title: Optional[str]
-    availableOn: Optional[str]
+    message: Optional[str] = None
+    title: Optional[str] = None
+    availableOn: Optional[str] = None
 
     def validate(self) -> Optional[Exception]:
+        validation_errors = []
         if not self.message:
-            return Exception("message cannot be empty")
+            validation_errors.append("message cannot be empty")
         if not self.title:
-            return Exception("title cannot be empty")
+            validation_errors.append("title cannot be empty")
         if self.availableOn is None:
-            return Exception("availableOn cannot be empty")
+            validation_errors.append("availableOn cannot be empty")
+        if validation_errors:
+            return Exception(";".join(validation_errors))
         return None
+
+    @classmethod
+    def from_dict(cls, dikt: dict):
+        return cls(**{
+            k: v for k, v in dikt.items()
+            if k in inspect.signature(cls).parameters
+        })
 
 
 @dataclass
 class PlayerActivity:
-    userId: Optional[str]
-    activity: Optional[str]
+    userId: Optional[str] = None
+    activity: Optional[str] = None
 
     def validate(self) -> Optional[Exception]:
+        validation_errors = []
         if not self.userId:
-            return Exception("userId cannot be empty")
+            validation_errors.append("userId cannot be empty")
         if not self.activity:
-            return Exception("activity cannot be empty")
+            validation_errors.append("activity cannot be empty")
+        if validation_errors:
+            return Exception(";".join(validation_errors))
         return None
+
+    @classmethod
+    def from_dict(cls, dikt: dict):
+        return cls(**{
+            k: v for k, v in dikt.items()
+            if k in inspect.signature(cls).parameters
+        })
 
 
 assert issubclass(CustomGameRecord, Validatable)
