@@ -5,6 +5,10 @@
 BUILDER := grpc-plugin-server-builder
 IMAGE_NAME := $(shell basename "$$(pwd)")-app
 
+SOURCE_DIR := src
+VENV_DIR := venv
+PROJECT_DIR ?= $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+
 clean:
 	rm -rf $(SOURCE_DIR)/$(PROTO_DIR)/*_grpc.py
 	rm -rf $(SOURCE_DIR)/$(PROTO_DIR)/*_pb2.py
@@ -14,7 +18,7 @@ clean:
 proto: clean
 proto:
 	docker run --rm --tty -u $$(id -u):$$(id -g) \
-		--volume $$(pwd):/data \
+		--volume $(PROJECT_DIR):/data \
 		--workdir /data \
 		rvolosatovs/protoc:4.1.0 \
 			--proto_path=app/proto=src/app/proto \
@@ -79,6 +83,7 @@ test_functional_accelbyte_hosted: proto
 	docker run --rm -t \
 		--env-file $(ENV_PATH) \
 		-e HOME=/data \
+		-e PROJECT_DIR=$(PROJECT_DIR) \
 		-u $$(id -u):$$(id -g) \
 		--group-add $$(getent group docker | cut -d ':' -f 3) \
 		-v /var/run/docker.sock:/var/run/docker.sock \

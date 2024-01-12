@@ -6,7 +6,7 @@ set -e
 set -o pipefail
 #set -x
 
-APP_NAME=int-test-mm
+APP_NAME=int-test-cloudsave
 
 get_code_verifier() 
 {
