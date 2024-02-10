@@ -27,7 +27,7 @@ from .services.cloudsave_validator_service import (
 
 DEFAULT_APP_PORT: int = 6565
 
-DEFAULT_AB_BASE_URL: str = "https://demo.accelbyte.io"
+DEFAULT_AB_BASE_URL: str = "https://test.accelbyte.io"
 DEFAULT_AB_NAMESPACE: str = "accelbyte"
 DEFAULT_AB_SECURITY_CLIENT_ID: Optional[str] = None
 DEFAULT_AB_SECURITY_CLIENT_SECRET: Optional[str] = None
