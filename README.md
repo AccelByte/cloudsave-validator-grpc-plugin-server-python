@@ -40,7 +40,7 @@ custom functions for validating cloudsave payloads.
 
    c. docker v23.x
 
-   d. python 3.9+
+   d. python 3.10
 
    e. [postman](https://www.postman.com/)
 

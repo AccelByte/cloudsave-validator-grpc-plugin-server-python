@@ -15,7 +15,7 @@ TEST_SAMPLE_CONTAINER_NAME := sample-override-test
 .PHONY: venv test
 
 venv:
-	python3.9 -m venv ${VENV_DIR} \
+	python3.10 -m venv ${VENV_DIR} \
 			&& ${VENV_DIR}/bin/pip install -r requirements-dev.txt
 
 clean:
@@ -42,7 +42,7 @@ run:
 			-v $$(pwd):/data \
 			-w /data \
 			-e HOME=/data \
-			--entrypoint /bin/sh python:3.9-slim \
+			--entrypoint /bin/sh python:3.10-slim \
 			-c 'ln -sf $$(which python) ${VENV_DIR}/bin/python-docker \
 					&& PYTHONPATH=${SOURCE_DIR} GRPC_VERBOSITY=debug ${VENV_DIR}/bin/python-docker -m app'
 
@@ -52,7 +52,7 @@ help:
 			-v $$(pwd):/data \
 			-w /data \
 			-e HOME=/data \
-			--entrypoint /bin/sh python:3.9-slim \
+			--entrypoint /bin/sh python:3.10-slim \
 			-c 'ln -sf $$(which python) ${VENV_DIR}/bin/python-docker \
 					&& PYTHONPATH=${SOURCE_DIR} ${VENV_DIR}/bin/python-docker -m app --help'
 
@@ -78,7 +78,7 @@ test:
 			-v $$(pwd):/data \
 			-w /data \
 			-e HOME=/data \
-			--entrypoint /bin/sh python:3.9-slim \
+			--entrypoint /bin/sh python:3.10-slim \
 			-c 'ln -sf $$(which python) ${VENV_DIR}/bin/python-docker \
 					&& PYTHONPATH=${SOURCE_DIR} ${VENV_DIR}/bin/python-docker -m tests'
 
