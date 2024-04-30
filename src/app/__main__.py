@@ -87,9 +87,9 @@ def create_options(env: Env, logger: Logger) -> List[AppOption]:
     with env.prefixed("AB_"):
         base_url = env.str("BASE_URL", DEFAULT_AB_BASE_URL)
         namespace = env.str("NAMESPACE", DEFAULT_AB_NAMESPACE)
-        client_id = env.str("SECURITY_CLIENT_ID", DEFAULT_AB_SECURITY_CLIENT_ID)
+        client_id = env.str("CLIENT_ID", DEFAULT_AB_SECURITY_CLIENT_ID)
         client_secret = env.str(
-            "SECURITY_CLIENT_SECRET", DEFAULT_AB_SECURITY_CLIENT_SECRET
+            "CLIENT_SECRET", DEFAULT_AB_SECURITY_CLIENT_SECRET
         )
 
     with env.prefixed("ENABLE_"):
