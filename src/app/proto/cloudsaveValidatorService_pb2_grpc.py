@@ -54,6 +54,36 @@ class CloudsaveValidatorServiceStub(object):
                 request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminPlayerRecord.SerializeToString,
                 response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
                 )
+        self.BeforeWriteGameBinaryRecord = channel.unary_unary(
+                '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteGameBinaryRecord',
+                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+                )
+        self.AfterReadGameBinaryRecord = channel.unary_unary(
+                '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadGameBinaryRecord',
+                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+                )
+        self.AfterBulkReadGameBinaryRecord = channel.unary_unary(
+                '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadGameBinaryRecord',
+                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameBinaryRecord.SerializeToString,
+                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
+                )
+        self.BeforeWritePlayerBinaryRecord = channel.unary_unary(
+                '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWritePlayerBinaryRecord',
+                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+                )
+        self.AfterReadPlayerBinaryRecord = channel.unary_unary(
+                '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadPlayerBinaryRecord',
+                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+                )
+        self.AfterBulkReadPlayerBinaryRecord = channel.unary_unary(
+                '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadPlayerBinaryRecord',
+                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.SerializeToString,
+                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
+                )
 
 
 class CloudsaveValidatorServiceServicer(object):
@@ -111,6 +141,44 @@ class CloudsaveValidatorServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def BeforeWriteGameBinaryRecord(self, request, context):
+        """game binary record
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AfterReadGameBinaryRecord(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AfterBulkReadGameBinaryRecord(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def BeforeWritePlayerBinaryRecord(self, request, context):
+        """player binary record
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AfterReadPlayerBinaryRecord(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AfterBulkReadPlayerBinaryRecord(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CloudsaveValidatorServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -153,6 +221,36 @@ def add_CloudsaveValidatorServiceServicer_to_server(servicer, server):
                     servicer.BeforeWriteAdminPlayerRecord,
                     request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminPlayerRecord.FromString,
                     response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+            ),
+            'BeforeWriteGameBinaryRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.BeforeWriteGameBinaryRecord,
+                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.FromString,
+                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
+            ),
+            'AfterReadGameBinaryRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.AfterReadGameBinaryRecord,
+                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.FromString,
+                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
+            ),
+            'AfterBulkReadGameBinaryRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.AfterBulkReadGameBinaryRecord,
+                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameBinaryRecord.FromString,
+                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.SerializeToString,
+            ),
+            'BeforeWritePlayerBinaryRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.BeforeWritePlayerBinaryRecord,
+                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.FromString,
+                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+            ),
+            'AfterReadPlayerBinaryRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.AfterReadPlayerBinaryRecord,
+                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.FromString,
+                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+            ),
+            'AfterBulkReadPlayerBinaryRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.AfterBulkReadPlayerBinaryRecord,
+                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.FromString,
+                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -297,5 +395,107 @@ class CloudsaveValidatorService(object):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteAdminPlayerRecord',
             app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminPlayerRecord.SerializeToString,
             app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def BeforeWriteGameBinaryRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteGameBinaryRecord',
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AfterReadGameBinaryRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadGameBinaryRecord',
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AfterBulkReadGameBinaryRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadGameBinaryRecord',
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameBinaryRecord.SerializeToString,
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def BeforeWritePlayerBinaryRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWritePlayerBinaryRecord',
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AfterReadPlayerBinaryRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadPlayerBinaryRecord',
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AfterBulkReadPlayerBinaryRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadPlayerBinaryRecord',
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.SerializeToString,
+            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
