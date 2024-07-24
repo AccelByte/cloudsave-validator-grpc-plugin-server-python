@@ -39,10 +39,6 @@ DEFAULT_ENABLE_REFLECTION: bool = True
 DEFAULT_ENABLE_ZIPKIN: bool = True
 
 DEFAULT_PLUGIN_GRPC_SERVER_AUTH_ENABLED: bool = False
-DEFAULT_PLUGIN_GRPC_SERVER_AUTH_RESOURCE: str = "ADMIN:NAMESPACE:{namespace}:CLOUDSAVE:PLUGINS"
-DEFAULT_PLUGIN_GRPC_SERVER_AUTH_ACTION: int = int(
-    PermissionAction.READ | PermissionAction.UPDATE
-)
 
 DEFAULT_PLUGIN_GRPC_SERVER_LOGGING_ENABLED: bool = False
 DEFAULT_PLUGIN_GRPC_SERVER_METRICS_ENABLED: bool = True
@@ -135,12 +131,8 @@ def create_options(env: Env, logger: Logger) -> List[AppOption]:
                 options.append(
                     AppOptionGRPCInterceptor(
                         interceptor=AuthorizationServerInterceptor(
-                            resource=env.str(
-                                "RESOURCE", DEFAULT_PLUGIN_GRPC_SERVER_AUTH_RESOURCE
-                            ),
-                            action=env.int(
-                                "ACTION", DEFAULT_PLUGIN_GRPC_SERVER_AUTH_ACTION
-                            ),
+                            resource=env.str("RESOURCE", None),
+                            action=env.int("ACTION", None),
                             namespace=namespace,
                             token_validator=CachingTokenValidator(sdk=sdk),
                         )
