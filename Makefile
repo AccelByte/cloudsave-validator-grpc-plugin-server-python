@@ -72,7 +72,7 @@ imagex_push:
 	docker buildx build -t ${REPO_URL}:${IMAGE_TAG} --platform linux/amd64 --push .
 	docker buildx rm --keep-state $(BUILDER)
 
-test:
+test_with_env:
 	docker run --rm -t \
 			-u $$(id -u):$$(id -g) \
 			-v $$(pwd):/data \
