@@ -4,7 +4,6 @@
 
 import asyncio
 import logging
-from argparse import ArgumentParser
 from logging import Logger
 from typing import List, Optional
 
@@ -16,7 +15,6 @@ from accelbyte_grpc_plugin.app import (
     AppOptionGRPCInterceptor,
     AppOptionGRPCService,
 )
-from accelbyte_grpc_plugin.ctypes import PermissionAction
 from accelbyte_grpc_plugin.utils import create_env
 
 from .proto.cloudsaveValidatorService_pb2_grpc import (
@@ -44,12 +42,14 @@ DEFAULT_PLUGIN_GRPC_SERVER_LOGGING_ENABLED: bool = False
 DEFAULT_PLUGIN_GRPC_SERVER_METRICS_ENABLED: bool = True
 
 
-async def main(port: int, **kwargs) -> None:
+async def main(**kwargs) -> None:
     logger = logging.getLogger("app")
     logger.setLevel(logging.INFO)
     logger.addHandler(logging.StreamHandler())
 
     env = create_env(**kwargs)
+
+    port: int = env.int("PORT", DEFAULT_APP_PORT)
 
     options = create_options(env=env, logger=logger)
     options.append(
@@ -62,20 +62,6 @@ async def main(port: int, **kwargs) -> None:
 
     app = App(port=port, env=env, logger=logger, options=options)
     await app.run()
-
-
-def parse_args():
-    parser = ArgumentParser()
-    parser.add_argument(
-        "-p",
-        "--port",
-        default=DEFAULT_APP_PORT,
-        type=int,
-        required=False,
-        help="[P]ort",
-    )
-    result = vars(parser.parse_args())
-    return result
 
 
 def create_options(env: Env, logger: Logger) -> List[AppOption]:
@@ -162,4 +148,4 @@ def create_options(env: Env, logger: Logger) -> List[AppOption]:
 
 
 if __name__ == "__main__":
-    asyncio.run(main(**parse_args()))
+    asyncio.run(main())
