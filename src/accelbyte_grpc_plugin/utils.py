@@ -4,7 +4,6 @@
 
 from environs import Env
 from logging import Logger
-from typing import Optional
 from typing import Any, Dict, Optional, Set
 
 from grpc import HandlerCallDetails

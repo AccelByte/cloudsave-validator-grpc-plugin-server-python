@@ -4,9 +4,10 @@
 
 import asyncio
 import logging
-
 from logging import Logger
-from typing import List
+from typing import List, Optional
+
+from environs import Env
 
 from accelbyte_py_sdk.core import (
     AccelByteSDK,
@@ -15,8 +16,6 @@ from accelbyte_py_sdk.core import (
     HttpxHttpClient,
 )
 from accelbyte_py_sdk.services import auth as auth_service
-
-from environs import Env
 
 from accelbyte_grpc_plugin.app import (
     App,
@@ -27,7 +26,6 @@ from accelbyte_grpc_plugin.app import (
 from accelbyte_grpc_plugin.utils import instrument_sdk_http_client
 
 from .proto.cloudsaveValidatorService_pb2_grpc import add_CloudsaveValidatorServiceServicer_to_server
-
 from .services.cloudsave_validator_service import AsyncCloudsaveValidatorService
 from .utils import create_env
 
@@ -42,6 +40,9 @@ DEFAULT_ENABLE_REFLECTION: bool = True
 DEFAULT_ENABLE_ZIPKIN: bool = True
 
 DEFAULT_PLUGIN_GRPC_SERVER_AUTH_ENABLED: bool = True
+DEFAULT_PLUGIN_GRPC_SERVER_AUTH_RESOURCE: Optional[str] = None
+DEFAULT_PLUGIN_GRPC_SERVER_AUTH_ACTION: Optional[int] = None
+
 DEFAULT_PLUGIN_GRPC_SERVER_LOGGING_ENABLED: bool = False
 DEFAULT_PLUGIN_GRPC_SERVER_METRICS_ENABLED: bool = True
 
@@ -81,7 +82,10 @@ async def main(**kwargs) -> None:
     options.append(
         AppOptionGRPCService(
             full_name=AsyncCloudsaveValidatorService.full_name,
-            service=AsyncCloudsaveValidatorService(logger=logger),
+            service=AsyncCloudsaveValidatorService(
+                sdk=sdk,
+                logger=logger,
+            ),
             add_service_fn=add_CloudsaveValidatorServiceServicer_to_server,
         )
     )
@@ -97,14 +101,16 @@ def create_options(sdk: AccelByteSDK, env: Env, logger: Logger) -> List[AppOptio
         namespace = env.str("NAMESPACE", DEFAULT_AB_NAMESPACE)
 
     with env.prefixed("ENABLE_"):
-        if env.bool("HEALTH_CHECK", DEFAULT_ENABLE_HEALTH_CHECK):
+        if env.bool("HEALTH_CHECK", env.bool("HEALTH_CHECKING", DEFAULT_ENABLE_HEALTH_CHECK)):
             from accelbyte_grpc_plugin.options.grpc_health_check import (
                 AppOptionGRPCHealthCheck,
             )
 
             options.append(AppOptionGRPCHealthCheck())
         if env.bool("PROMETHEUS", DEFAULT_ENABLE_PROMETHEUS):
-            from accelbyte_grpc_plugin.options.prometheus import AppOptionPrometheus
+            from accelbyte_grpc_plugin.options.prometheus import (
+                AppOptionPrometheus
+            )
 
             options.append(AppOptionPrometheus())
         if env.bool("REFLECTION", DEFAULT_ENABLE_REFLECTION):
@@ -114,7 +120,9 @@ def create_options(sdk: AccelByteSDK, env: Env, logger: Logger) -> List[AppOptio
 
             options.append(AppOptionGRPCReflection())
         if env.bool("ZIPKIN", DEFAULT_ENABLE_ZIPKIN):
-            from accelbyte_grpc_plugin.options.zipkin import AppOptionZipkin
+            from accelbyte_grpc_plugin.options.zipkin import (
+                AppOptionZipkin
+            )
 
             options.append(AppOptionZipkin())
 
@@ -127,8 +135,14 @@ def create_options(sdk: AccelByteSDK, env: Env, logger: Logger) -> List[AppOptio
                 options.append(
                     AppOptionGRPCInterceptor(
                         interceptor=AuthorizationServerInterceptor(
-                            namespace=namespace,
                             token_validator=CachingTokenValidator(sdk=sdk),
+                            resource=env.str(
+                                "RESOURCE", DEFAULT_PLUGIN_GRPC_SERVER_AUTH_RESOURCE
+                            ),
+                            action=env.int(
+                                "ACTION", DEFAULT_PLUGIN_GRPC_SERVER_AUTH_ACTION
+                            ),
+                            namespace=namespace,
                         )
                     )
                 )

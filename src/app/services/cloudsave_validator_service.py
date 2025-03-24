@@ -1,4 +1,4 @@
-# Copyright (c) 2023 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2025 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
@@ -9,6 +9,8 @@ from logging import Logger
 from typing import Any, Optional
 
 from google.protobuf.json_format import MessageToJson
+
+from accelbyte_py_sdk import AccelByteSDK
 
 from .models import (
     CustomGameRecord,
@@ -26,7 +28,6 @@ from ..proto.cloudsaveValidatorService_pb2 import (
     BulkPlayerBinaryRecord,
     BulkPlayerRecord,
     BulkPlayerRecordValidationResult,
-    Error,
     GameBinaryRecord,
     GameRecord,
     GameRecordValidationResult,
@@ -35,7 +36,6 @@ from ..proto.cloudsaveValidatorService_pb2 import (
     PlayerRecordValidationResult,
     DESCRIPTOR,
 )
-
 from ..proto.cloudsaveValidatorService_pb2_grpc import CloudsaveValidatorServiceServicer
 
 
@@ -45,9 +45,11 @@ class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):
     def __init__(
         self,
         max_size_event_banner_in_kb: float = 100,
+        sdk: Optional[AccelByteSDK] = None,
         logger: Optional[Logger] = None
     ) -> None:
         self.max_size_event_banner_in_kb = max_size_event_banner_in_kb
+        self.sdk = sdk
         self.logger = logger
 
     # noinspection PyShadowingBuiltins
