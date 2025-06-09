@@ -10,9 +10,7 @@ BUILDER := extend-builder
 SOURCE_DIR := src
 VENV_DIR := venv
 
-TEST_SAMPLE_CONTAINER_NAME := sample-override-test
-
-.PHONY: venv test
+.PHONY: venv
 
 venv:
 	python3.10 -m venv ${VENV_DIR} \
@@ -71,16 +69,6 @@ imagex_push:
 	docker buildx inspect $(BUILDER) || docker buildx create --name $(BUILDER) --use
 	docker buildx build -t ${REPO_URL}:${IMAGE_TAG} --platform linux/amd64 --push .
 	docker buildx rm --keep-state $(BUILDER)
-
-test_with_env:
-	docker run --rm -t \
-			-u $$(id -u):$$(id -g) \
-			-v $$(pwd):/data \
-			-w /data \
-			-e HOME=/data \
-			--entrypoint /bin/sh python:3.10-slim \
-			-c 'ln -sf $$(which python) ${VENV_DIR}/bin/python-docker \
-					&& PYTHONPATH=${SOURCE_DIR} ${VENV_DIR}/bin/python-docker -m tests'
 
 ngrok:
 	@which ngrok || (echo "ngrok is not installed" ; exit 1)
