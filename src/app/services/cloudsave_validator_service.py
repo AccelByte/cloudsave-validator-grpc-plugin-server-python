@@ -18,7 +18,7 @@ from .models import (
     DailyMessage,
     PlayerActivity,
 )
-from ..proto.cloudsaveValidatorService_pb2 import (
+from cloudsaveValidatorService_pb2 import (
     AdminGameRecord,
     AdminPlayerRecord,
     BinaryInfo,
@@ -36,7 +36,7 @@ from ..proto.cloudsaveValidatorService_pb2 import (
     PlayerRecordValidationResult,
     DESCRIPTOR,
 )
-from ..proto.cloudsaveValidatorService_pb2_grpc import CloudsaveValidatorServiceServicer
+from cloudsaveValidatorService_pb2_grpc import CloudsaveValidatorServiceServicer
 
 
 class AsyncCloudsaveValidatorService(CloudsaveValidatorServiceServicer):

@@ -26,7 +26,7 @@ from accelbyte_grpc_plugin.app import (
 )
 from accelbyte_grpc_plugin.utils import instrument_sdk_http_client
 
-from .proto.cloudsaveValidatorService_pb2_grpc import add_CloudsaveValidatorServiceServicer_to_server
+from cloudsaveValidatorService_pb2_grpc import add_CloudsaveValidatorServiceServicer_to_server
 from .services.cloudsave_validator_service import AsyncCloudsaveValidatorService
 from .utils import create_env
 

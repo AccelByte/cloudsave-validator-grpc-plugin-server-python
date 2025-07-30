@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from app.proto import cloudsaveValidatorService_pb2 as app_dot_proto_dot_cloudsaveValidatorService__pb2
+import cloudsaveValidatorService_pb2 as cloudsaveValidatorService__pb2
 
 
 class CloudsaveValidatorServiceStub(object):
@@ -16,73 +16,73 @@ class CloudsaveValidatorServiceStub(object):
         """
         self.BeforeWriteGameRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteGameRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
                 )
         self.AfterReadGameRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadGameRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
                 )
         self.AfterBulkReadGameRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadGameRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.BulkGameRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
                 )
         self.BeforeWritePlayerRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWritePlayerRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
                 )
         self.AfterReadPlayerRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadPlayerRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
                 )
         self.AfterBulkReadPlayerRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadPlayerRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.BulkPlayerRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
                 )
         self.BeforeWriteAdminGameRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteAdminGameRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminGameRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.AdminGameRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
                 )
         self.BeforeWriteAdminPlayerRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteAdminPlayerRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminPlayerRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.AdminPlayerRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
                 )
         self.BeforeWriteGameBinaryRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteGameBinaryRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
                 )
         self.AfterReadGameBinaryRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadGameBinaryRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
                 )
         self.AfterBulkReadGameBinaryRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadGameBinaryRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameBinaryRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.BulkGameBinaryRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
                 )
         self.BeforeWritePlayerBinaryRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWritePlayerBinaryRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
                 )
         self.AfterReadPlayerBinaryRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadPlayerBinaryRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
                 )
         self.AfterBulkReadPlayerBinaryRecord = channel.unary_unary(
                 '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadPlayerBinaryRecord',
-                request_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.SerializeToString,
-                response_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
+                request_serializer=cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.SerializeToString,
+                response_deserializer=cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
                 )
 
 
@@ -184,73 +184,73 @@ def add_CloudsaveValidatorServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'BeforeWriteGameRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.BeforeWriteGameRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.GameRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
             ),
             'AfterReadGameRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterReadGameRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.GameRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
             ),
             'AfterBulkReadGameRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterBulkReadGameRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.BulkGameRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.SerializeToString,
             ),
             'BeforeWritePlayerRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.BeforeWritePlayerRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.PlayerRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
             ),
             'AfterReadPlayerRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterReadPlayerRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.PlayerRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
             ),
             'AfterBulkReadPlayerRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterBulkReadPlayerRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.BulkPlayerRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.SerializeToString,
             ),
             'BeforeWriteAdminGameRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.BeforeWriteAdminGameRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminGameRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.AdminGameRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
             ),
             'BeforeWriteAdminPlayerRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.BeforeWriteAdminPlayerRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminPlayerRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.AdminPlayerRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
             ),
             'BeforeWriteGameBinaryRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.BeforeWriteGameBinaryRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.GameBinaryRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
             ),
             'AfterReadGameBinaryRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterReadGameBinaryRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.GameBinaryRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.GameRecordValidationResult.SerializeToString,
             ),
             'AfterBulkReadGameBinaryRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterBulkReadGameBinaryRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameBinaryRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.BulkGameBinaryRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.SerializeToString,
             ),
             'BeforeWritePlayerBinaryRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.BeforeWritePlayerBinaryRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.PlayerBinaryRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
             ),
             'AfterReadPlayerBinaryRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterReadPlayerBinaryRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.PlayerBinaryRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.PlayerRecordValidationResult.SerializeToString,
             ),
             'AfterBulkReadPlayerBinaryRecord': grpc.unary_unary_rpc_method_handler(
                     servicer.AfterBulkReadPlayerBinaryRecord,
-                    request_deserializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.FromString,
-                    response_serializer=app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.SerializeToString,
+                    request_deserializer=cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.FromString,
+                    response_serializer=cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -274,8 +274,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteGameRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -291,8 +291,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadGameRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.GameRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -308,8 +308,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadGameRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.BulkGameRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -325,8 +325,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWritePlayerRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -342,8 +342,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadPlayerRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.PlayerRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -359,8 +359,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadPlayerRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.BulkPlayerRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -376,8 +376,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteAdminGameRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminGameRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.AdminGameRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -393,8 +393,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteAdminPlayerRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.AdminPlayerRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.AdminPlayerRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -410,8 +410,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWriteGameBinaryRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -427,8 +427,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadGameBinaryRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.GameBinaryRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.GameRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -444,8 +444,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadGameBinaryRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameBinaryRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.BulkGameBinaryRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.BulkGameRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -461,8 +461,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/BeforeWritePlayerBinaryRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -478,8 +478,8 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterReadPlayerBinaryRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.PlayerBinaryRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.PlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -495,7 +495,7 @@ class CloudsaveValidatorService(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/accelbyte.cloudsave.validator.CloudsaveValidatorService/AfterBulkReadPlayerBinaryRecord',
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.SerializeToString,
-            app_dot_proto_dot_cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
+            cloudsaveValidatorService__pb2.BulkPlayerBinaryRecord.SerializeToString,
+            cloudsaveValidatorService__pb2.BulkPlayerRecordValidationResult.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
