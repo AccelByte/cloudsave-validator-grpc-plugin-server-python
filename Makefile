@@ -1,20 +1,22 @@
-# Copyright (c) 2022-2025 AccelByte Inc. All Rights Reserved.
+# Copyright (c) 2025 AccelByte Inc. All Rights Reserved.
 # This is licensed software from AccelByte Inc, for limitations
 # and restrictions contact your company contract manager.
 
 SHELL := /bin/bash
 
-IMAGE_NAME := $(shell basename "$$(pwd)")-app
-BUILDER := extend-builder
+PROTOC_IMAGE := proto-builder
 
-.PHONY: proto build
+.PHONY: build proto_image proto
 
-proto:
+proto_image:
+	docker build --target proto-builder -t $(PROTOC_IMAGE) .
+
+proto: proto_image
 	docker run --tty --rm --user $$(id -u):$$(id -g) \
 		--volume $$(pwd):/build \
 		--workdir /build \
 		--entrypoint /bin/bash \
-		rvolosatovs/protoc:4.1.0 \
+		$(PROTOC_IMAGE) \
 			proto.sh
 
 build: proto
